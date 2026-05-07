@@ -21,7 +21,7 @@ std::string string_sum(std::string s1, std::string s2)
     {
 
         if (ite >= s1lenght)
-        {
+        { 
             s1 += '0';
         }
         if (ite >= s2lenght)
@@ -32,7 +32,7 @@ std::string string_sum(std::string s1, std::string s2)
         int number2 = s2[ite] - '0';
 
         std::cout << "ite = " << ite << "\n";
-        std::cout << "number1 = " << number1 << "number 2 = " << number2 << "\n";
+        std::cout << "numbedr1 = " << number1 << "number 2 = " << number2 << "\n";
 
         int sum = number1 + number2 + remain;
 
