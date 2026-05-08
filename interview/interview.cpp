@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Number.h"
 
 
 std::string string_sum(std::string s1, std::string s2)
@@ -21,7 +22,7 @@ std::string string_sum(std::string s1, std::string s2)
     {
 
         if (ite >= s1lenght)
-        { 
+        {   
             s1 += '0';
         }
         if (ite >= s2lenght)
@@ -75,5 +76,11 @@ std::string string_sum(std::string s1, std::string s2)
 
 int main()
 {
-    std::cout << string_sum("12345", "1");
+    std::cout << string_sum("12345", "1") << "\n";
+    for (int i = 0; i < 50; i++)
+    {
+		Number num(i + 1);
+		num.printNumber();
+		std::cout << "number size = " << num.getSize() << "\n";
+    }
 }
