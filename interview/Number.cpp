@@ -1,8 +1,12 @@
 #include "Number.h"
 
-
-Number::Number(int size)
+ 
+Number::Number(int size, unsigned int seed)
 {
+
+	if (seed != 0)
+		srand(seed);
+
 	this->size = size;
 	for (int i = 0; i < size; i++)
 	{
@@ -16,6 +20,22 @@ Number::Number(int size)
 	{
 		isNegative = true;
 	}
+}
+Number::Number(std::string value,  bool negative)
+{
+	this->size = value.size();
+	this->stringValue = value;
+	this->isNegative = negative;
+}
+
+std::string Number::getStringValue()
+{
+	return stringValue;
+}
+
+bool Number:: getIsNegative()
+{
+	return isNegative;
 }
 
 int Number::generateRandomDigit()

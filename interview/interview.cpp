@@ -32,12 +32,12 @@ std::string string_sum(std::string s1, std::string s2)
         int number1 = s1[ite] - '0';
         int number2 = s2[ite] - '0';
 
-        std::cout << "ite = " << ite << "\n";
-        std::cout << "numbedr1 = " << number1 << "number 2 = " << number2 << "\n";
+        //std::cout << "ite = " << ite << "\n";
+        //std::cout << "numbedr1 = " << number1 << "number 2 = " << number2 << "\n";
 
         int sum = number1 + number2 + remain;
 
-        std::cout << "sum = " << sum << "remain = " << remain << "\n";
+        //std::cout << "sum = " << sum << "remain = " << remain << "\n";
 
         remain = (sum > 9) ? 1 : 0;
         wholesum += ((sum % 10) + '0');
@@ -49,38 +49,35 @@ std::string string_sum(std::string s1, std::string s2)
     }
     std::reverse(wholesum.begin(), wholesum.end());
 
-
-    //for (int i = 0; i < s1lenght; i++)
-    //{
-    //    int number1 = s1[i] - '0';
-    //    int number2 = s2[i] - '0';
-    //    int sum = number1 + number2 + remain;
-
-    //    if (sum > 9)
-    //    {
-    //        remain = 1;
-    //    }
-    //    else
-    //    {
-    //        remain = 0;
-    //    }
-    //    wholesum += ((sum % 10)  + '0');
-
-    //}
-    //wholesum += (remain + '0');
-    //std::reverse(wholesum.begin(), wholesum.end());
-    //std::cout << wholesum;
-
     return wholesum;
 }
 
+
+std::string string_subtract(std::string s1, std::string s2)
+{
+	return "not implemented";
+}
+
+
 int main()
 {
-    std::cout << string_sum("12345", "1") << "\n";
+    srand(time(nullptr));
+    std::string positiveSum = "0";
+	std::string negativeSum = "0";
     for (int i = 0; i < 50; i++)
     {
 		Number num(i + 1);
-		num.printNumber();
-		std::cout << "number size = " << num.getSize() << "\n";
+		std::cout << "my number is -> ";
+        num.printNumber();
+        if (num.getIsNegative())
+        {
+            negativeSum = string_sum(negativeSum, num.getStringValue());
+        }
+        else
+        {
+            positiveSum = string_sum(positiveSum, num.getStringValue());
+        }
+		std::cout << "positive sum = " << positiveSum << "\n";
+		std::cout << "negative sum = " << negativeSum << "\n";
     }
 }
