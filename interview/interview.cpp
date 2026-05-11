@@ -5,6 +5,14 @@
 #include <vector>
 #include "Number.h"
 
+std::string removeTrailingZeros(std::string s) 
+{
+    while (s.size() > 1 && s.back() == '0') 
+    {
+        s.pop_back();
+    }
+    return s;
+}
 
 std::string string_sum(std::string s1, std::string s2)
 {
@@ -55,29 +63,75 @@ std::string string_sum(std::string s1, std::string s2)
 
 std::string string_subtract(std::string s1, std::string s2)
 {
-	return "not implemented";
+    //assuming s1.size > s2.size
+    std::cout << s1.size() << " " << s2.size();
+	if (s1.size() < s2.size())
+	{
+        //throw error
+
+		return "error";
+	}
+    int s1lenght = int(s1.size());
+    int s2lenght = int(s2.size());
+
+
+    int remain = 0;
+    std::string wholesum = "";
+    int ite = 0;
+    std::reverse(s1.begin(), s1.end());
+    std::reverse(s2.begin(), s2.end());
+    while (ite < s1lenght)
+    {
+        if (ite >= s2lenght)
+        {
+            s2 += '0';
+        }
+        int number1 = s1[ite] - '0';
+        int number2 = s2[ite] - '0';
+
+        int diff = number1 - number2 - remain;
+        if (diff < 0)
+        {
+            remain = 1;
+            diff = 10 + diff;
+        }
+        else { remain = 0; }
+        wholesum += ((diff) + '0');
+        ite += 1;
+
+    }
+    std::string removeTrailingZeros(wholesum);
+
+    std::reverse(wholesum.begin(), wholesum.end());
+
+    return wholesum;
 }
 
 
 int main()
 {
-    srand(time(nullptr));
-    std::string positiveSum = "0";
-	std::string negativeSum = "0";
-    for (int i = 0; i < 50; i++)
-    {
-		Number num(i + 1);
-		std::cout << "my number is -> ";
-        num.printNumber();
-        if (num.getIsNegative())
-        {
-            negativeSum = string_sum(negativeSum, num.getStringValue());
-        }
-        else
-        {
-            positiveSum = string_sum(positiveSum, num.getStringValue());
-        }
-		std::cout << "positive sum = " << positiveSum << "\n";
-		std::cout << "negative sum = " << negativeSum << "\n";
-    }
+ //   srand(time(nullptr));
+ //   std::string positiveSum = "0";
+	//std::string negativeSum = "0";
+ //   for (int i = 0; i < 50; i++)
+ //   {
+	//	Number num(i + 1);
+	//	std::cout << "my number is -> ";
+ //       num.printNumber();
+ //       if (num.getIsNegative())
+ //       {
+ //           negativeSum = string_sum(negativeSum, num.getStringValue());
+ //       }
+ //       else
+ //       {
+ //           positiveSum = string_sum(positiveSum, num.getStringValue());
+ //       }
+	//	std::cout << "positive sum = " << positiveSum << "\n";
+	//	std::cout << "negative sum = " << negativeSum << "\n";
+ //   }
+
+
+
+
+    std::cout << string_subtract("2345", "278");
 }
