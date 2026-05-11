@@ -10,6 +10,7 @@ public:
 	void printNumber();
 	bool getIsNegative();
 	std::string getStringValue();
+	void printNumberFirstTen();
 
 
 private:

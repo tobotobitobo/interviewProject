@@ -63,14 +63,7 @@ std::string string_sum(std::string s1, std::string s2)
 
 std::string string_subtract(std::string s1, std::string s2)
 {
-    //assuming s1.size > s2.size
-    std::cout << s1.size() << " " << s2.size();
-	if (s1.size() < s2.size())
-	{
-        //throw error
-
-		return "error";
-	}
+    
     int s1lenght = int(s1.size());
     int s2lenght = int(s2.size());
 
@@ -100,7 +93,7 @@ std::string string_subtract(std::string s1, std::string s2)
         ite += 1;
 
     }
-    std::string removeTrailingZeros(wholesum);
+    wholesum = removeTrailingZeros(wholesum);
 
     std::reverse(wholesum.begin(), wholesum.end());
 
@@ -110,28 +103,53 @@ std::string string_subtract(std::string s1, std::string s2)
 
 int main()
 {
- //   srand(time(nullptr));
- //   std::string positiveSum = "0";
-	//std::string negativeSum = "0";
- //   for (int i = 0; i < 50; i++)
- //   {
-	//	Number num(i + 1);
-	//	std::cout << "my number is -> ";
- //       num.printNumber();
- //       if (num.getIsNegative())
- //       {
- //           negativeSum = string_sum(negativeSum, num.getStringValue());
- //       }
- //       else
- //       {
- //           positiveSum = string_sum(positiveSum, num.getStringValue());
- //       }
-	//	std::cout << "positive sum = " << positiveSum << "\n";
-	//	std::cout << "negative sum = " << negativeSum << "\n";
- //   }
+    srand(time(nullptr));
+    std::string positiveSum = "0";
+	std::string negativeSum = "0";
+    for (int i = 0; i < 50; i++)
+    {
+		Number num(i + 1);
+		std::cout << "my number is -> ";
+        num.printNumber();
+        if (num.getIsNegative())
+        {
+            negativeSum = string_sum(negativeSum, num.getStringValue());
+        }
+        else
+        {
+            positiveSum = string_sum(positiveSum, num.getStringValue());
+        }
+    }
+    Number positive(positiveSum, false);
+    Number negative(negativeSum, true);
+    bool isnegative = false;
+    if (negative.getSize() != positive.getSize())
+    {
+        if (negative.getSize() > positive.getSize())
+        {
+            isnegative = true;
+        }
+    }
+    else
+    {
+        if (negative.getStringValue() > positive.getStringValue())
+        {
+            isnegative = true;
+        }
+    }
 
+    std::string finalstr;
 
+    if (isnegative)
+    {
+        finalstr = string_subtract(negativeSum, positiveSum);
+    }
+    else
+    {
+        finalstr = string_subtract(positiveSum, negativeSum);
+    }
 
+    Number finalsum(finalstr, isnegative);
 
-    std::cout << string_subtract("2345", "278");
+    finalsum.printNumberFirstTen();
 }

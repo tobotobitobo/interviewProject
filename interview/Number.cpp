@@ -28,6 +28,20 @@ Number::Number(std::string value,  bool negative)
 	this->isNegative = negative;
 }
 
+void Number::printNumberFirstTen()
+{
+	if(this->isNegative)
+	{
+		std::cout << "-";
+	}
+	if (this->getSize() <= 10)
+	{
+		this->printNumber();
+	}
+	std::cout << this->getStringValue().substr(0, 10) << "\n";
+}
+
+
 std::string Number::getStringValue()
 {
 	return stringValue;
