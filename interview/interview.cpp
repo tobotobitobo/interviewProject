@@ -8,14 +8,18 @@
 
 int main()
 {
+    //run tests
     runTests();
+    //random
     srand(time(nullptr));
+    //initialize wholesum
     Number wholesum("0", false);
     for (int i = 0; i < 50; i++)
     {
+        //initialize num of size i+1
         Number num(i + 1);
         //num.printNumber();
-        wholesum = wholesum + num;
+        wholesum = wholesum + num; //add to wholesum
     }
 
 

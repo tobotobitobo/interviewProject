@@ -3,13 +3,14 @@
 class Number
 {
 public:
+	//sett stable seed if not defined othervise
 	Number(int size, unsigned int seed = 0);
 	Number(std::string value, bool negative);
 	~Number();
-	int getSize();
 	void printNumber();
 	bool getIsNegative();
 	std::string getStringValue();
+	int getSize();
 	void printNumberFirstTen();
 
 	Number operator+(Number next);

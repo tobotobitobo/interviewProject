@@ -13,6 +13,7 @@ bool test(std::string testName, Number a, Number b, Number c) {
 	std::cout << "\n";
 	c.printNumber();
 	result.printNumber();
+	//if sign and values are same test succesful
 	if ((result.getStringValue() == c.getStringValue()) && result.getIsNegative() == c.getIsNegative())
 	{
 		std::cout << "test succesfull\n";
@@ -29,6 +30,7 @@ bool test(std::string testName, Number a, Number b, Number c) {
 
 void test_generation()
 {
+	//generate numbers and check lenght and sign
 	std::cout << "testing 50 number generator \n ";
 	for (int i = 0; i < 50; i++)
 	{
@@ -44,9 +46,10 @@ void test_generation()
 
 void runTests() {
 	test_generation();
+	//run tests and get number of succeses
 	std::vector<bool> tests
 	{
-		test("kladne + zaporne", Number("2345", false), Number("1278", true), Number("1067", false)),
+		test("kladne + zaporne", Number("2345", false), Number("3278", true), Number("1067", true)),
 		test("kladne + kladne", Number("123", false), Number("877", false), Number("1000", false)),
 		test("zaporne + zaporne", Number("500", true), Number("200", true), Number("700", true)),
 		test("daco", Number("999", false), Number("1", false), Number("1000", false)),
